@@ -14,7 +14,14 @@ body {
   height: 100%;
 }
 
-
+/** button **/
+.button-red {
+  padding: 20px 15px;
+  background-color: rgb(255, 84, 84);
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+}
 
 /* === MAIN LAYOUT === */
 .main-layout {
