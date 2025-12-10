@@ -110,9 +110,7 @@ body {
         grid-template-columns: repeat (2, 1fr);
       }
       
-    }
-
-
+    }    
 .footer-menu {
     background-color: rgba(243, 255, 230, 0.95);
     border-top: 1px solid #d8cfcf;
