@@ -1,9 +1,34 @@
+<?php
+// Encodage
+header('Content-Type: text/html; charset=utf-8');
+
+// Connexion à la BDD
+include('ex-appli-connexion.php');
+
+$bdd = new PDO(
+    "mysql:host=$bdd_Hote;dbname=$bdd_Base",
+    $bdd_Utilisateur,
+    $bdd_MotDePasse,
+    array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8mb4'")
+);
+
+// Requête : posts publics + auteur
+$requete_posts = $bdd->prepare("
+    SELECT Post.Description, Post.Image, User.Username
+    FROM Post
+    JOIN User ON Post.Author = User.ID
+    WHERE Post.State = 'public'
+    ORDER BY Post.ID DESC
+");
+
+$requete_posts->execute();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nouvelle escrapade</title>
+  <title>Accueil</title>
   <link rel="icon" href="images/logosanstexte.png" type="image/png">
   <link rel="apple-touch-icon" href="images/logosanstexte.png">
   <link rel="preload" as="image" href="images/logosanstexte.pngs">
@@ -35,25 +60,25 @@
 
       <!-- Feed -->
       <main class="feed">
-        <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>Timer</title>
-<style>
-  body {font-family:sans-serif;display:flex;flex-direction:column;margin:0; color:rgb(2, 96, 2);}
-  #time {font-size:4em;}
-  button {margin:10px;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;color:#111;font-weight:bold;}
-</style>
-</head>
-<body>
-  <div id="time">00:00:00</div>
-  <button onclick="start()">Start</button>
-  <button onclick="stop()">Stop</button>
+<?php foreach ($requete_posts as $post) { ?>
+  <article class="post">
+    <div class="post-header">
+      <img src="https://i.pravatar.cc/40" class="avatar">
+      <span class="post-user"><?= htmlspecialchars($post['Username']) ?></span>
+    </div>
 
-<button class="button-red">J'ai terminé mon escrapade !</button>
+    <img src="images/posts/<?= htmlspecialchars($post['Image']) ?>" alt="post" class="post-image">
 
-      </main>
+    <div class="post-body">
+      <p>
+        <strong><?= htmlspecialchars($post['Username']) ?></strong>
+        <?= htmlspecialchars($post['Description']) ?>
+      </p>
+    </div>
+  </article>
+<?php } ?>
+</main>
+
     </div>
   </div>
   <footer class="footer-menu">
@@ -64,13 +89,6 @@
             <li><a href="profil.html">Profil</a></li>
         </ul>
     </nav>
-    
-<script>
-let s=0,run=0,interval;
-function start(){if(!run){run=1;interval=setInterval(()=>{s++;let h=Math.floor(s/3600),m=Math.floor(s/60)%60,sec=s%60;time.textContent=[h,m,sec].map(v=>String(v).padStart(2,'0')).join(':')},1000)}}
-function stop(){run=0;clearInterval(interval)}
-function reset(){stop();s=0;time.textContent='00:00:00'}
-</script>
   </footer>
 </body>
 </html>
