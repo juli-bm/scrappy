@@ -48,7 +48,7 @@ $requete_posts->execute();
     <!-- Navbar -->
     <header class="navbar">
       <h1 class="logo">
-        <a href="home.html">
+        <a href="home.php">
           <img src="images/logotextehori.png" alt="Scrappy logo" class="logo-img">
         </a>
       </h1>
