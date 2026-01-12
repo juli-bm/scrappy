@@ -3,14 +3,15 @@
 header('Content-Type: text/html; charset=utf-8');
 
 // Connexion à la BDD
-include('ex-appli-connexion.php');
+include('bdd.php');
 
 $bdd = new PDO(
-    "mysql:host=$bdd_Hote;dbname=$bdd_Base",
+    "mysql:host=$bdd_Hote;dbname=$bdd_Base;charset=utf8mb4",
     $bdd_Utilisateur,
-    $bdd_MotDePasse,
-    array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8mb4'")
+    $bdd_MotDePasse
 );
+echo "Connexion OK à la base mwe26_jmouilla_scrappy";
+exit;
 
 // Requête : posts publics + auteur
 $requete_posts = $bdd->prepare("
