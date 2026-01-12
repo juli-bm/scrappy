@@ -67,7 +67,7 @@ $requete_posts->execute();
       <span class="post-user"><?= htmlspecialchars($post['Username']) ?></span>
     </div>
 
-    <img src="images/posts/<?= htmlspecialchars($post['Image']) ?>" alt="post" class="post-image">
+    <img src="https://picsum.photos/600/400?random=<?= rand(1,100) ?>" class="post-image">
 
     <div class="post-body">
       <p>
