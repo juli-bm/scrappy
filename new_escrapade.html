@@ -51,7 +51,7 @@
   <button onclick="start()">Start</button>
   <button onclick="stop()">Stop</button>
 
-<button class="button-red">J'ai terminé mon escrapade !</button>
+<button class="button-red" onclick="finish()">J'ai terminé mon escrapade !</button>
 
       </main>
     </div>
@@ -70,6 +70,11 @@ let s=0,run=0,interval;
 function start(){if(!run){run=1;interval=setInterval(()=>{s++;let h=Math.floor(s/3600),m=Math.floor(s/60)%60,sec=s%60;time.textContent=[h,m,sec].map(v=>String(v).padStart(2,'0')).join(':')},1000)}}
 function stop(){run=0;clearInterval(interval)}
 function reset(){stop();s=0;time.textContent='00:00:00'}
+
+function finish(){
+  localStorage.setItem("escrapadeTime", s); // s = secondes
+  window.location.href = "end_escrapade.html";
+}
 </script>
   </footer>
 </body>

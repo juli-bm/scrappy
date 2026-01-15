@@ -3,26 +3,17 @@
 header('Content-Type: text/html; charset=utf-8');
 
 // Connexion à la BDD
-include('bdd.php');
-
-$bdd = new PDO(
-    "mysql:host=$bdd_Hote;dbname=$bdd_Base;charset=utf8mb4",
-    $bdd_Utilisateur,
-    $bdd_MotDePasse
-);
+include('ex-appli-connexion.php');
+            $bdd = new PDO("mysql:host=$bdd_Hote;dbname=$bdd_Base",
+                $bdd_Utilisateur, $bdd_MotDePasse,
+                array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8mb4'"));
 echo "Connexion OK à la base mwe26_jmouilla_scrappy";
 exit;
 
-// Requête : posts publics + auteur
-$requete_posts = $bdd->prepare("
-    SELECT Post.Description, Post.Image, User.Username
-    FROM Post
-    JOIN User ON Post.Author = User.ID
-    WHERE Post.State = 'public'
-    ORDER BY Post.ID DESC
-");
+      $requete_refs = $bdd->prepare('SELECT * FROM bibliographie_refs ORDER BY annee_nombre LIMIT 25;');
 
-$requete_posts->execute();
+			$requete_refs->execute(Array());
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -61,6 +52,14 @@ $requete_posts->execute();
 
       <!-- Feed -->
       <main class="feed">
+        <?php foreach($requete_refs as $ligne) { ?>
+        <ul>
+          <li>
+            
+          </li>
+        </ul>
+        <?php } ?>
+
 <?php foreach ($requete_posts as $post) { ?>
   <article class="post">
     <div class="post-header">
