@@ -53,8 +53,8 @@ include('ex-appli-connexion.php');
 <?php foreach ($requete_posts as $post) { ?>
   <article class="post">
     <div class="post-header">
-      <img src="avatar/avatar<?= $User['avatar'] ?>.png" class="avatar">
-      <span class="post-user"><?= htmlspecialchars($Post['Author']) ?></span>
+      <img src="avatar/avatar<?= $user['avatar'] ?>.png" class="avatar">
+      <span class="post-user"><?= htmlspecialchars($post['Author']) ?></span>
     </div>
 
     <img src="images/<?= $post['Image']?>" class="post-image">
