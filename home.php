@@ -7,12 +7,10 @@ include('ex-appli-connexion.php');
             $bdd = new PDO("mysql:host=$bdd_Hote;dbname=$bdd_Base",
                 $bdd_Utilisateur, $bdd_MotDePasse,
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8mb4'"));
-echo "Connexion OK à la base mwe26_jmouilla_scrappy";
-exit;
 
-      $requete_refs = $bdd->prepare('SELECT * FROM bibliographie_refs ORDER BY annee_nombre LIMIT 25;');
+      $requete_posts = $bdd->prepare('SELECT * FROM Post;');
 
-			$requete_refs->execute(Array());
+			$requete_posts->execute(Array());
 
 ?>
 <!DOCTYPE html>
@@ -52,26 +50,18 @@ exit;
 
       <!-- Feed -->
       <main class="feed">
-        <?php foreach($requete_refs as $ligne) { ?>
-        <ul>
-          <li>
-            
-          </li>
-        </ul>
-        <?php } ?>
-
 <?php foreach ($requete_posts as $post) { ?>
   <article class="post">
     <div class="post-header">
       <img src="https://i.pravatar.cc/40" class="avatar">
-      <span class="post-user"><?= htmlspecialchars($post['Username']) ?></span>
+      <span class="post-user"><?= htmlspecialchars($post['Author']) ?></span>
     </div>
 
-    <img src="https://picsum.photos/600/400?random=<?= rand(1,100) ?>" class="post-image">
+    <img src="images/<?= $post['Image']?>" class="post-image">
 
     <div class="post-body">
       <p>
-        <strong><?= htmlspecialchars($post['Username']) ?></strong>
+        <strong><?= htmlspecialchars($post['Author']) ?></strong>
         <?= htmlspecialchars($post['Description']) ?>
       </p>
     </div>
@@ -84,7 +74,7 @@ exit;
   <footer class="footer-menu">
     <nav>
         <ul>
-            <li><a href="home.html">Accueil</a></li>
+            <li><a href="home.php">Accueil</a></li>
             <li><a href="new_escrapade.html">Nouvelle escrapade</a></li>
             <li><a href="profil.html">Profil</a></li>
         </ul>
