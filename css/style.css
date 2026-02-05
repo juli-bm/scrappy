@@ -55,6 +55,7 @@ body {
   display: flex;
   align-items: center;
   padding: 10px 15px;
+  gap: 10px;
 }
 
 .post-header .avatar {
