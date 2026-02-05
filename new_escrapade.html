@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🍄 Nouvelle escrapade 🍄</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/header.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,27 +26,42 @@
 
       <!-- Feed -->
       <main class="feed">
-        <article class="post">
-          <div class="post-header">
-            <img src="https://i.pravatar.cc/40?img=5" class="avatar">
-            <span class="post-user">hugo_dev</span>
-          </div>
-          <img src="https://picsum.photos/600/400?random=12" alt="post" class="post-image">
-          <div class="post-body">
-            <p><strong>hugo_dev</strong> Escrapade matinale :)))</p>
-          </div>
-        </article>
+        <!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Timer</title>
+<style>
+  body {font-family:sans-serif;display:flex;flex-direction:column;margin:0; color:rgb(2, 96, 2);}
+  #time {font-size:4em;}
+  button {margin:10px;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;color:#111;font-weight:bold;}
+</style>
+</head>
+<body>
+  <div id="time">00:00:00</div>
+  <button onclick="start()">Start</button>
+  <button onclick="stop()">Stop</button>
+
+<button class="button-red">J'ai terminé mon escrapade !</button>
+
       </main>
     </div>
   </div>
   <footer class="footer-menu">
     <nav>
         <ul>
-            <li><a>Accueil</a></li>
-            <li><a>Nouvelle escrapade</a></li>
-            <li><a>Profil</a></li>
+            <li><a href="home.html">Accueil</a></li>
+            <li><a href="new_escrapade.html">Nouvelle escrapade</a></li>
+            <li><a href="profil.html">Profil</a></li>
         </ul>
     </nav>
+    
+<script>
+let s=0,run=0,interval;
+function start(){if(!run){run=1;interval=setInterval(()=>{s++;let h=Math.floor(s/3600),m=Math.floor(s/60)%60,sec=s%60;time.textContent=[h,m,sec].map(v=>String(v).padStart(2,'0')).join(':')},1000)}}
+function stop(){run=0;clearInterval(interval)}
+function reset(){stop();s=0;time.textContent='00:00:00'}
+</script>
   </footer>
 </body>
 </html>

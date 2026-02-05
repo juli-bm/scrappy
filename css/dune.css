@@ -1,9 +1,13 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: radial-gradient(circle at top, #fff0f0 0%, #f8ede3 30%, #e6f4ea 80%);
+  background: #fdfaf1;
     margin: 0;
     padding: 0;
     color: #333;
+}
+
+.main{
+    margin-bottom: 8em;
 }
 
 .app-container {
@@ -48,9 +52,6 @@ body {
     font-style: italic;
     color: #555;
 }
-
-
-
 
 .stats div {
     text-align: center;
@@ -110,7 +111,9 @@ body {
         grid-template-columns: repeat (2, 1fr);
       }
       
-    }    
+    }
+
+
 .footer-menu {
     background-color: rgba(243, 255, 230, 0.95);
     border-top: 1px solid #d8cfcf;
