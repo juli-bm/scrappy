@@ -6,7 +6,7 @@
 
 <h2>Formulaire d'inscription</h2>
 
-<form method="post" action="https://azrael.sha.univ-poitiers.fr/~ydelmas/exemples/info-max.php">
+<form method="post" action="form.php">
     <label>Nom :</label><br>
     <input type="text" name="nom"><br><br>
 

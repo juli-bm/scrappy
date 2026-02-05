@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nouvelle escrapade</title>
-  <link rel="icon" href="images/logosanstexte.png" type="image/png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crée ta nouvelle escrapade !</title>
+<link rel="icon" href="images/logosanstexte.png" type="image/png">
   <link rel="apple-touch-icon" href="images/logosanstexte.png">
   <link rel="preload" as="image" href="images/logosanstexte.pngs">
 
@@ -17,7 +17,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Cinzel+Decorative:wght@400;700;900&family=Henny+Penny&family=La+Belle+Aurore&family=MedievalSharp&family=Mystery+Quest&display=swap" rel="stylesheet">
 </head>
-
 <body>
   <div class="app-container">
     <!-- Navbar -->
@@ -35,21 +34,13 @@
 
       <!-- Feed -->
       <main class="feed">
-        
-<body>
-  <div id="time">00:00:00</div>
-  <button onclick="start()">Start</button>
-  <button onclick="stop()">Stop</button>
-
-<button class="button-red" onclick="finish()">J'ai terminé mon escrapade !</button>
-
-      </main>
+        </main>
     </div>
   </div>
   <footer class="footer-menu">
     <nav>
         <ul>
-            <li><a href="home.php">Accueil</a></li>
+            <li><a href="home.html">Accueil</a></li>
             <li><a href="new_escrapade.html">Nouvelle escrapade</a></li>
             <li><a href="profil.html">Profil</a></li>
         </ul>

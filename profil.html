@@ -6,7 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>🍄 Profil 🍄</title>
+    <title>Profil</title>
+    <link rel="icon" href="images/logosanstexte.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/logosanstexte.png">
+    <link rel="preload" as="image" href="images/logosanstexte.pngs">
+
     <link rel="stylesheet" href="css/dune.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/header.css">
@@ -23,9 +27,14 @@
     <div class="app-container"></div>
 
     <!-- Navbar -->
-         <header class="navbar">
-        <h1 class="logo">🍄 Scrappy 🍄</h1>
-  </header>
+    <header class="navbar">
+      <h1 class="logo">
+        <a href="home.html">
+          <img src="images/logotextehori.png" alt="Scrappy logo" class="logo-img">
+        </a>
+      </h1>
+      <input type="text" class="search-bar" placeholder="Rechercher...">
+    </header>
  <body>
   <div class="main">
    <div class="avatar" style="font-size:60px;">🧝‍♂️</div>
@@ -48,7 +57,7 @@
 <!-- Onglets Archives / Public -->
 <div class="tabs">
   <button class="tab active">Public</button>
-  <button class="tab">Archives</button>
+  <button class="tab">Privé</button>
 </div>
   
 <div class="gallery" id="gallery-public">
@@ -73,7 +82,7 @@
     <footer class="footer-menu">
         <nav>
             <ul>
-                <li><a href="home.html">Accueil</a></li>
+                <li><a href="home.php">Accueil</a></li>
                 <li><a href="new_escrapade.html">Nouvelle escrapade</a></li>
                 <li><a href="profil.html">Profil</a></li>
             </ul>
@@ -82,7 +91,7 @@
 <script>
   const tabs = document.querySelectorAll(".tab");
   const publicGallery = document.getElementById("gallery-public");
-  const archiveGallery = document.getElementById("gallery-archives");
+  const archiveGallery = document.getElementById("gallery-private");
 
   tabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
