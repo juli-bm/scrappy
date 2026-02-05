@@ -4,14 +4,30 @@ header('Content-Type: text/html; charset=utf-8');
 
 // Connexion à la BDD
 include('ex-appli-connexion.php');
-            $bdd = new PDO("mysql:host=$bdd_Hote;dbname=$bdd_Base",
-                $bdd_Utilisateur, $bdd_MotDePasse,
-                array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8mb4'"));
+$bdd = new PDO("mysql:host=$bdd_Hote;dbname=$bdd_Base",
+    $bdd_Utilisateur, $bdd_MotDePasse,
+    array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8mb4'"));
 
-      $requete_posts = $bdd->prepare('SELECT * FROM Post;');
+// JOIN the User table to get the Avatar
+$requete_posts = $bdd->prepare('
+    SELECT 
+        Post.*, 
+        User.Avatar, 
+        User.Username
+    FROM Post
+    JOIN User ON Post.Author = User.ID
+    ORDER BY Post.ID DESC
+');
 
-			$requete_posts->execute(Array());
+$requete_posts->execute();
 
+$avatars = [
+    1 => 'avatar/avatar1.png',
+    2 => 'avatar/avatar2.png',
+    3 => 'avatar/avatar3.png',
+    4 => 'avatar/avatar4.png',
+    5 => 'avatar/avatar5.png'
+];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -53,15 +69,15 @@ include('ex-appli-connexion.php');
 <?php foreach ($requete_posts as $post) { ?>
   <article class="post">
     <div class="post-header">
-      <img src="avatar/avatar<?= $user['avatar'] ?>.png" class="avatar">
-      <span class="post-user"><?= htmlspecialchars($post['Author']) ?></span>
+      <img src="<?= $avatars[$post['Avatar']] ?>" class="avatar">
+      <span class="post-user"><?= htmlspecialchars($post['Username']) ?></span>
     </div>
 
     <img src="images/<?= $post['Image']?>" class="post-image">
 
     <div class="post-body">
       <p>
-        <strong><?= htmlspecialchars($post['Author']) ?></strong>
+        <strong><?= htmlspecialchars($post['Username']) ?></strong>
         <?= htmlspecialchars($post['Description']) ?>
       </p>
     </div>
