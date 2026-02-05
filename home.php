@@ -53,7 +53,7 @@ include('ex-appli-connexion.php');
 <?php foreach ($requete_posts as $post) { ?>
   <article class="post">
     <div class="post-header">
-      <img src="https://i.pravatar.cc/40" class="avatar">
+      <img src="images/avatar<?= $post['avatar'] ?>.png" class="avatar">
       <span class="post-user"><?= htmlspecialchars($post['Author']) ?></span>
     </div>
 
