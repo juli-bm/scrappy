@@ -1,10 +1,25 @@
-/* === FONTS === */
+/* === Couleurs === */
+
+:root {
+  --bg:      #EDE5D8;
+  --main:    #C15A30;
+  --accent:  #F08378;
+  --surface: #F5EFE4;
+  --leaf:    #7A9E6E;
+  --blush:   #d68f63;
+  --text:    #3B3A41;
+  --muted:   #8A7F76;
+  --font-display: 'Abril Fatface', serif;
+  --font-banner:  'Bebas Neue', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+}
+
 body {
-  font-family: 'Arial', sans-serif;
-  background: #fdfaf1;
+  font-family: var(--font-body);
+  background: var(--bg);
   margin: 0;
   padding: 0;
-  color: #333;
+  color: var(--text);
 }
 
 /* === LAYOUT === */
